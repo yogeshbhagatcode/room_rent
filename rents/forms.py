@@ -42,6 +42,8 @@ class UserDetailsForm(forms.ModelForm):
             "phone_number",
             "address",
             "photo",
+            "aadhaar_card_front_photo",
+            "aadhaar_card_back_photo",
         ]
         widgets = {
             "username": forms.TextInput(attrs={"class": "form-control"}),
@@ -51,4 +53,10 @@ class UserDetailsForm(forms.ModelForm):
             "phone_number": forms.TextInput(attrs={"class": "form-control"}),
             "address": forms.Textarea(attrs={"class": "form-control"}),
             "photo": forms.ClearableFileInput(attrs={"class": "form-control"}),
+            "aadhaar_card_front_photo": forms.ClearableFileInput(
+                attrs={"class": "form-control"}
+            ),
+            "aadhaar_card_back_photo": forms.ClearableFileInput(
+                attrs={"class": "form-control"}
+            ),
         }

@@ -19,4 +19,4 @@ class UserDetails(AbstractUser):
     updated_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"User details for {self.username}"
+        return f"{self.username}"

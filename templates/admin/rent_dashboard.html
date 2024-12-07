@@ -35,8 +35,11 @@
         <!-- Statistics Section - 1 -->
         <div class="row mb-4">
             <div class="col-md-4">
-                <div class="card text-white bg-success mb-3">
-                    <div class="card-header">Total Revenue</div>
+                <div class="card text-white bg-success shadow-lg hover-shadow-lg mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Total Revenue</h5>
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">₹{{ total_revenue }}</h5>
                         <p class="card-text">Total revenue collected so far.</p>
@@ -45,8 +48,11 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card text-white bg-secondary mb-3">
-                    <div class="card-header">Total Paid Amount</div>
+                <div class="card text-white bg-secondary shadow-lg hover-shadow-lg mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Total Paid Amount</h5>
+                        <i class="fas fa-credit-card"></i>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">₹{{ total_paid_amount }}</h5>
                         <p class="card-text">Total amount paid by tenants.</p>
@@ -55,8 +61,11 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card text-white bg-danger mb-3">
-                    <div class="card-header">Total Pending Amount</div>
+                <div class="card text-white bg-danger shadow-lg hover-shadow-lg mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Total Pending Amount</h5>
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">₹{{ total_pending_amount }}</h5>
                         <p class="card-text">Total pending rent to be collected.</p>
@@ -68,8 +77,11 @@
         <!-- Statistics Section - 2 -->
         <div class="row mb-4">
             <div class="col-md-4">
-                <div class="card text-white bg-info mb-3">
-                    <div class="card-header">Total Collected</div>
+                <div class="card text-white bg-info shadow-lg hover-shadow-lg mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Total Collected</h5>
+                        <i class="fas fa-check-circle"></i>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ total_collected }} Rents</h5>
                         <p class="card-text">Total number of rents collected.</p>
@@ -78,8 +90,11 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card text-white bg-warning mb-3">
-                    <div class="card-header">Total Overdue</div>
+                <div class="card text-white bg-warning shadow-lg hover-shadow-lg mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Total Overdue</h5>
+                        <i class="fas fa-clock"></i>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ total_overdue }} Rents</h5>
                         <p class="card-text">Total number of overdue rents.</p>
@@ -88,8 +103,11 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card text-white bg-primary mb-3">
-                    <div class="card-header">Average Rent Amount</div>
+                <div class="card text-white bg-primary shadow-lg hover-shadow-lg mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Average Rent Amount</h5>
+                        <i class="fas fa-percent"></i>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">₹{{ average_rent_amount|floatformat:2 }}</h5>
                         <p class="card-text">Average rent amount per tenant.</p>
@@ -101,8 +119,11 @@
         <!-- Statistics Section - 3 -->
         <div class="row mb-4">
             <div class="col-md-4">
-                <div class="card text-white bg-dark mb-3">
-                    <div class="card-header">Rent Payment Completion Rate</div>
+                <div class="card text-white bg-dark shadow-lg hover-shadow-lg mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Rent Payment Completion Rate</h5>
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ rent_payment_completion_rate|floatformat:2 }}%</h5>
                         <p class="card-text">Percentage of rents paid out of total rents.</p>
@@ -111,8 +132,11 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card text-white bg-success mb-3">
-                    <div class="card-header">Total Users</div>
+                <div class="card text-white bg-success shadow-lg hover-shadow-lg mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Total Users</h5>
+                        <i class="fas fa-users"></i>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ total_users }}</h5>
                         <p class="card-text">Total number of users renting rooms.</p>
@@ -121,8 +145,11 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card text-white bg-info mb-3">
-                    <div class="card-header">Total Rooms Rented</div>
+                <div class="card text-white bg-info shadow-lg hover-shadow-lg mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Total Rooms Rented</h5>
+                        <i class="fas fa-home"></i>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ total_rooms_rented }}</h5>
                         <p class="card-text">Total number of rooms rented out.</p>
@@ -131,5 +158,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

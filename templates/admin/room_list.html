@@ -1,0 +1,31 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-4">Rooms</h1>
+        <a href="{% url 'room_create' %}" class="btn btn-primary mb-3">Add New Room</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Room No</th>
+                    <th>Information</th>
+                    <th>Created On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for room in rooms %}
+                    <tr>
+                        <td>{{ room.room_no }}</td>
+                        <td>{{ room.information }}</td>
+                        <td>{{ room.created_on }}</td>
+                        <td>
+                            <a href="{% url 'room_update' room.pk %}" class="btn btn-warning">Edit</a>
+                            <a href="{% url 'room_delete' room.pk %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

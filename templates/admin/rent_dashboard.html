@@ -1,0 +1,167 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-4">Rents Dashboard</h1>
+
+        <!-- Filter Section -->
+        <form method="get" class="mb-4">
+            <div class="form-row">
+                <!-- Month Filter -->
+                <div class="form-group col-md-6">
+                    <label for="filter_month">Filter by Month</label>
+                    <select name="filter_month" id="filter_month" class="form-control">
+                        <option value="">All Months</option>
+                        {% for month_code, month_name in month_choices %}
+                            <option value="{{ month_code }}" {% if filter_month == month_code %}selected{% endif %}>{{ month_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Year Filter -->
+                <div class="form-group col-md-6">
+                    <label for="filter_year">Filter by Year</label>
+                    <select name="filter_year" id="filter_year" class="form-control">
+                        <option value="">All Years</option>
+                        {% for year in year_choices %}
+                            <option value="{{ year }}" {% if filter_year == year %}selected{% endif %}>{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Apply Filter</button>
+        </form>
+
+        <!-- Statistics Section - 1 -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header">Total Revenue</div>
+                    <div class="card-body">
+                        <h5 class="card-title">₹{{ total_revenue }}</h5>
+                        <p class="card-text">Total revenue collected so far.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-white bg-secondary mb-3">
+                    <div class="card-header">Total Paid Amount</div>
+                    <div class="card-body">
+                        <h5 class="card-title">₹{{ total_paid_amount }}</h5>
+                        <p class="card-text">Total amount paid by tenants.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-white bg-danger mb-3">
+                    <div class="card-header">Total Pending Amount</div>
+                    <div class="card-body">
+                        <h5 class="card-title">₹{{ total_pending_amount }}</h5>
+                        <p class="card-text">Total pending rent to be collected.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Section - 2 -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-header">Total Collected</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ total_collected }} Rents</h5>
+                        <p class="card-text">Total number of rents collected.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-white bg-warning mb-3">
+                    <div class="card-header">Total Overdue</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ total_overdue }} Rents</h5>
+                        <p class="card-text">Total number of overdue rents.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">Average Rent Amount</div>
+                    <div class="card-body">
+                        <h5 class="card-title">₹{{ average_rent_amount|floatformat:2 }}</h5>
+                        <p class="card-text">Average rent amount per tenant.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Section - 3 -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">Rent Payment Completion Rate</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ rent_payment_completion_rate|floatformat:2 }}%</h5>
+                        <p class="card-text">Percentage of rents paid out of total rents.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header">Total Users</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ total_users }}</h5>
+                        <p class="card-text">Total number of users renting rooms.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-header">Total Rooms Rented</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ total_rooms_rented }}</h5>
+                        <p class="card-text">Total number of rooms rented out.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rent Table Section -->
+        <a href="{% url 'rent_create' %}" class="btn btn-primary mb-3">Add New Rent</a>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Room No</th>
+                        <th>Amount</th>
+                        <th>Rent Month</th>
+                        <th>Paid Date</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rent in rents %}
+                        <tr>
+                            <td>{{ rent.user.username }}</td>
+                            <td>{{ rent.room_no.room_no }}</td>
+                            <td>{{ rent.amount }}</td>
+                            <td>{{ rent.rent_month }}</td>
+                            <td>{{ rent.paid_date }}</td>
+                            <td class="d-flex justify-content-center">
+                                <a href="{% url 'rent_update' rent.pk %}" class="btn btn-warning mx-2">Edit</a>
+                                <a href="{% url 'rent_delete' rent.pk %}" class="btn btn-danger mx-2">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

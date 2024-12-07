@@ -4,28 +4,30 @@
     <div class="container">
         <h1 class="my-4">Rooms</h1>
         <a href="{% url 'room_create' %}" class="btn btn-primary mb-3">Add New Room</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Room No</th>
-                    <th>Information</th>
-                    <th>Created On</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for room in rooms %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td>{{ room.room_no }}</td>
-                        <td>{{ room.information }}</td>
-                        <td>{{ room.created_on }}</td>
-                        <td class="d-flex justify-content-center">
-                            <a href="{% url 'room_update' room.pk %}" class="btn btn-warning mx-2">Edit</a>
-                            <a href="{% url 'room_delete' room.pk %}" class="btn btn-danger mx-2">Delete</a>
-                        </td>
+                        <th>Room No</th>
+                        <th>Information</th>
+                        <th>Created On</th>
+                        <th class="text-center">Actions</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for room in rooms %}
+                        <tr>
+                            <td>{{ room.room_no }}</td>
+                            <td>{{ room.information }}</td>
+                            <td>{{ room.created_on }}</td>
+                            <td class="d-flex justify-content-center">
+                                <a href="{% url 'room_update' room.pk %}" class="btn btn-warning mx-2">Edit</a>
+                                <a href="{% url 'room_delete' room.pk %}" class="btn btn-danger mx-2">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}

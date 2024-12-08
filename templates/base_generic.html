@@ -6,8 +6,26 @@
     <title>Admin Panel</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Flexbox layout for sticky footer */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1; /* Pushes the footer to the bottom */
+        }
+        footer {
+            background-color: #343a40; /* Matches the navbar color */
+            color: white;
+        }
+    </style>
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="{% url 'rent_dashboard' %}">Room Rent - Admin Panel</a>
         <!-- Toggler Button for Mobile View -->
@@ -20,7 +38,7 @@
                     <a class="nav-link" href="{% url 'rent_list' %}">Rents</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'user_details_list' %}">Users</a>
+                    <a class="nav-link" href="{% url 'user_list' %}">Users</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'room_list' %}">Rooms</a>
@@ -29,8 +47,22 @@
         </div>
     </nav>
 
-    {% block content %}
-    {% endblock %}
+    <!-- Main Content -->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3 mt-4">
+        <div class="container">
+            <p class="mb-0">
+                <i class="fas fa-home mr-2"></i>
+                Room Rent | Manage rent records effortlessly
+                <i class="fas fa-home ml-2"></i>
+            </p>
+        </div>
+    </footer>
 
     <!-- Bootstrap and jQuery (required for collapse functionality) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

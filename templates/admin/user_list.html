@@ -1,0 +1,57 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-4">Users</h1>
+        <a href="{% url 'user_create' %}" class="btn btn-primary mb-3">Add New User</a>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>Profile Photo</th>
+                        <th>Aadhaar Front</th>
+                        <th>Aadhaar Back</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td><a href="{% url 'user_detail' user.pk %}">{{ user.username }}</a></td>
+                            <td>{{ user.phone_number }}</td>
+                            <td>{{ user.address }}</td>
+                            <td>
+                                {% if user.photo %}
+                                    <img src="{{ user.photo.url }}" alt="Profile Photo" class="img-thumbnail" style="width: 50px; height: 50px;">
+                                {% else %}
+                                    <span>N/A</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if user.aadhaar_card_front_photo %}
+                                    <img src="{{ user.aadhaar_card_front_photo.url }}" alt="Aadhaar Front" class="img-thumbnail" style="width: 50px; height: 50px;">
+                                {% else %}
+                                    <span>N/A</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if user.aadhaar_card_back_photo %}
+                                    <img src="{{ user.aadhaar_card_back_photo.url }}" alt="Aadhaar Back" class="img-thumbnail" style="width: 50px; height: 50px;">
+                                {% else %}
+                                    <span>N/A</span>
+                                {% endif %}
+                            </td>
+                            <td class="d-flex justify-content-center">
+                                <a href="{% url 'user_update' user.pk %}" class="btn btn-warning mx-2">Edit</a>
+                                <a href="{% url 'user_delete' user.pk %}" class="btn btn-danger mx-2">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

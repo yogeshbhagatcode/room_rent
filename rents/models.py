@@ -3,7 +3,7 @@
 
 from django.db import models
 
-from user_details.models import UserDetails
+from users.models import UserDetails
 
 MONTH_CHOICES = [
     ("01", "January"),

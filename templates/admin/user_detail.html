@@ -1,0 +1,60 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">User Details - {{ user.username }}</h1>
+    <a href="{% url 'user_update' user.pk %}" class="btn btn-warning mb-3">Edit User</a>
+    <a href="{% url 'user_list' %}" class="btn btn-secondary mb-3">Back to List</a>
+    <div class="row">
+        <!-- Basic Information Section -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">Basic Information</div>
+                <div class="card-body">
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Phone Number:</strong> {{ user.phone_number }}</p>
+                    <p><strong>Address:</strong> {{ user.address }}</p>
+                </div>
+            </div>
+
+            <!-- Metadata Section -->
+            <div class="card">
+                <div class="card-header">Metadata</div>
+                <div class="card-body">
+                    <p><strong>Created On:</strong> {{ user.created_on|date:"F j, Y, g:i a" }}</p>
+                    <p><strong>Updated On:</strong> {{ user.updated_on|date:"F j, Y, g:i a" }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photos Section -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Photos</div>
+                <div class="card-body">
+                    <p><strong>Profile Photo:</strong></p>
+                    {% if user.photo %}
+                        <img src="{{ user.photo.url }}" alt="Profile Photo" class="img-fluid rounded mb-3">
+                    {% else %}
+                        <p>No photo available</p>
+                    {% endif %}
+                    <p><strong>Aadhaar Card Front:</strong></p>
+                    {% if user.aadhaar_card_front_photo %}
+                        <img src="{{ user.aadhaar_card_front_photo.url }}" alt="Aadhaar Front" class="img-fluid rounded mb-3">
+                    {% else %}
+                        <p>No photo available</p>
+                    {% endif %}
+                    <p><strong>Aadhaar Card Back:</strong></p>
+                    {% if user.aadhaar_card_back_photo %}
+                        <img src="{{ user.aadhaar_card_back_photo.url }}" alt="Aadhaar Back" class="img-fluid rounded">
+                    {% else %}
+                        <p>No photo available</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

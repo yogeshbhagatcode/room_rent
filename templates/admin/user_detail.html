@@ -20,7 +20,7 @@
             </div>
 
             <!-- Metadata Section -->
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-header">Metadata</div>
                 <div class="card-body">
                     <p><strong>Created On:</strong> {{ user.created_on|date:"F j, Y, g:i a" }}</p>
@@ -36,19 +36,19 @@
                 <div class="card-body">
                     <p><strong>Profile Photo:</strong></p>
                     {% if user.photo %}
-                        <img src="{{ user.photo.url }}" alt="Profile Photo" class="img-fluid rounded mb-3">
+                        <img src="{{ user.photo.url }}" alt="Profile Photo" class="img-fluid rounded mb-4" style="border: 2px solid #ccc; padding: 4px;">
                     {% else %}
                         <p>No photo available</p>
                     {% endif %}
                     <p><strong>Aadhaar Card Front:</strong></p>
                     {% if user.aadhaar_card_front_photo %}
-                        <img src="{{ user.aadhaar_card_front_photo.url }}" alt="Aadhaar Front" class="img-fluid rounded mb-3">
+                        <img src="{{ user.aadhaar_card_front_photo.url }}" alt="Aadhaar Front" class="img-fluid rounded mb-4" style="border: 2px solid #ccc; padding: 4px;">
                     {% else %}
                         <p>No photo available</p>
                     {% endif %}
                     <p><strong>Aadhaar Card Back:</strong></p>
                     {% if user.aadhaar_card_back_photo %}
-                        <img src="{{ user.aadhaar_card_back_photo.url }}" alt="Aadhaar Back" class="img-fluid rounded">
+                        <img src="{{ user.aadhaar_card_back_photo.url }}" alt="Aadhaar Back" class="img-fluid rounded" style="border: 2px solid #ccc; padding: 4px;">
                     {% else %}
                         <p>No photo available</p>
                     {% endif %}
